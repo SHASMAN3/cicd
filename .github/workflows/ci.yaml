@@ -1,4 +1,4 @@
-name: CI Workflow
+name: CI and Auto-Merge Workflow
 
 on:
   push:
@@ -29,3 +29,18 @@ jobs:
     - name: Run tests
       run: |
         pytest _test.py
+
+  auto-merge:
+    if: github.event_name == 'pull_request'
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+
+    steps:
+    - name: Auto-merge PR if tests pass
+      uses: "peter-evans/enable-pull-request-automerge@v3"
+      with:
+        pull-request-number: ${{ github.event.pull_request.number }}
+        merge-method: squash
