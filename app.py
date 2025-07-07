@@ -16,4 +16,4 @@ fifth_power = n ** 5
 st.write(f"The square of {n} is: {square}")
 st.write(f"The cube of {n} is: {cube}")
 st.write(f"The fifth power of {n} is: {fifth_power}")
-st.write("Thank you for using the Power Calculator!")
+st.write("Thank you")
