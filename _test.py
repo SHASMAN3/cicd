@@ -1,5 +1,5 @@
 import pytest
-
+print("hi")
 # Function to test square
 def square(n):
     return n ** 2
